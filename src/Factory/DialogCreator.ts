@@ -8,6 +8,7 @@ export abstract class DialogCreator {
     public render(): string {
         const button = this.createButton();
         button.OnClick(this)
+        console.log(button);
         return `Creator just created ${button.toString()} button`;
 
     }
