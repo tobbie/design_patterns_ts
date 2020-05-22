@@ -1,5 +1,3 @@
-import { strict } from "assert";
-
 
 export abstract class Shape{
 

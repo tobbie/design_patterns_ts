@@ -4,6 +4,7 @@ import { DialogCreator } from './Factory/DialogCreator';
 import {Circle} from './Prototype/Circle'
 import {Rectangle} from './Prototype/Rectangle'
 import { Shape } from './Prototype/Shape';
+import {Singleton} from './Singleton/Singleton';
 
 require('dotenv').config();
 
@@ -64,6 +65,9 @@ class PrototypeClient {
          let rect2 : Rectangle;
          rect2 = rect1.Clone();
          this.shapes.push(rect2);
+         
+         console.log(circle1 === circle2)
+         console.log(rect1 === rect2)
 
          
      }
@@ -91,3 +95,24 @@ class PrototypeClient {
 console.log('-----Test Prototype-----')
 let protoClient : PrototypeClient =  new PrototypeClient();
 protoClient.CreateShapesCopy()
+
+console.log('-----Test Singleton-----')
+
+const singletonFunction = () => {
+     const xy:Singleton  = Singleton.getInstance();
+     const dy:Singleton = Singleton.getInstance();
+
+     console.log(xy === dy);
+     console.log(xy);
+     console.log(dy);
+     xy.incermentCounter();
+     console.log(dy);
+     dy.incermentCounter();
+     console.log(xy);
+     console.log(xy.getCounter())
+     console.log(Singleton.getInstance().getCounter());
+     console.log(Singleton.Configuration())
+     
+}
+
+singletonFunction();
