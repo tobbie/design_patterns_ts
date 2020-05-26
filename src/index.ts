@@ -5,6 +5,10 @@ import {Circle} from './Prototype/Circle'
 import {Rectangle} from './Prototype/Rectangle'
 import { Shape } from './Prototype/Shape';
 import {Singleton} from './Singleton/Singleton';
+import { CarBuilder } from './Builder/CarBuilder';
+import { Director } from './Builder/Director';
+import { Car } from './Builder/Car'
+import { IBuilder } from './Builder/IBuilder';
 
 require('dotenv').config();
 
@@ -116,3 +120,15 @@ const singletonFunction = () => {
 }
 
 singletonFunction();
+
+console.log('-----Test Builder-----')
+
+const makeCar = () => {
+    const builder: CarBuilder = new CarBuilder();
+    const director:Director = new Director(builder);
+    director.makeSportsCar(builder);
+    let carProduct:Car = builder.getResult();
+    console.log(carProduct);
+}
+
+makeCar();
